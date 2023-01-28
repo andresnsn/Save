@@ -1,0 +1,28 @@
+*{
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.currentLetter{
+  text-decoration: underline;
+  text-decoration-color:  blue;
+  text-decoration-style: solid;
+
+}
+
+.correctLetter{
+  background-color: green;
+  display: inline-block;
+}
+
+.wrongLetter{
+  background-color: red;
+  display: inline-block;
+}
+
+.wrapper{
+  display: flex;
+}
+
+.space{
+  text-indent: 1em;
+}

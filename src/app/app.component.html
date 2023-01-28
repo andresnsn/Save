@@ -1,0 +1,13 @@
+<div class="wrapper" (keypress)="test($event)">
+
+  <div *ngFor="let letter of split()">
+
+    <div [ngClass]="[letter.value == currentLetter && letter.index == position? 'currentLetter' : '', errorRegister.includes(letter.value+letter.index)? 'wrongLetter': '' ]">{{letter.value == ' '? ' ' : letter.value}}</div>
+
+
+  </div>
+
+
+
+</div>
+
