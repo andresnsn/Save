@@ -26,7 +26,7 @@ export class AppComponent {
 
 
   @HostListener('document:keypress', ['$event'])
-  eventHandler(event: any): any{
+  public eventHandler(event: any): any{
 
     if(this.position >= this.size) {
 
@@ -37,7 +37,7 @@ export class AppComponent {
       calc < 99.9 && calc > 75? alert("Você é um Jonnin!") :
       calc < 74.9 && calc > 50? alert("Você é um Chunnin!") :
       calc < 49.9 && calc > 25? alert("Você é um Gennin!") :
-      calc < 25? alert("Você é um bosta"!) : null
+      calc < 25? alert("Você é um bosta!") : null
 
 
     };
@@ -57,7 +57,7 @@ export class AppComponent {
 
   }
 
-  split(){
+  public split(): any[] {
 
     let splittedText = this.text.split('')
     let indexedLetters: any[] = [];
