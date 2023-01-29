@@ -1,13 +1,21 @@
-<div class="testContent" (keypress)="eventHandler($event)">
+<form [formGroup]="form">
 
-  <div *ngFor="let letter of split()">
+  <div class="centralize">
+    <input type="text" placeholder="Insira o seu texto aqui" size="100" formControlName="inputText">
+    <button type="submit" (click)="inputText()">Inserir texto</button>
+  </div>
 
-    <div [ngClass]="[letter.value == currentLetter && letter.index == position? 'currentLetter' : '', errorRegister.includes(letter.value+letter.index)? 'wrongLetter': '', successRegister.includes(letter.value+letter.index)? 'correctLetter' : '' ]">{{letter.value == ' '? ' ' : letter.value}}</div>
+  <div class="centralize" (keypress)="eventHandler($event)">
 
+
+    <div *ngFor="let letter of split()">
+
+      <div [ngClass]="[letter.value == currentLetter && letter.index == position? 'currentLetter' : '', errorRegister.includes(letter.value+letter.index)? 'wrongLetter': '', successRegister.includes(letter.value+letter.index)? 'correctLetter' : '' ]">{{letter.value == ' '? ' ' : letter.value}}</div>
+
+
+    </div>
 
   </div>
 
-
-
-</div>
+</form>
 

@@ -1,18 +1,22 @@
 import { Component, HostListener, OnInit } from '@angular/core';
-import { TitleStrategy } from '@angular/router';
+import { FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
+
+  constructor(private formBuilder: FormBuilder){}
+
+  public form: any;
 
   private isWrong: boolean = false;
 
   public position: any = 0;
 
-  private text: string = 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt praesentium autem iste reiciendis nulla. Libero, ex quibusdam ratione at, ipsam commodi quidem asperiores consequatur assumenda tempore modi, praesentium voluptas iusto.';
+  private text: string = 'Lorem';
 
   public currentLetter: any = this.text[0];
 
@@ -24,6 +28,16 @@ export class AppComponent {
 
   public successRegister: any[] = [];
 
+  ngOnInit() {
+    this.form = this.formBuilder.group({
+      inputText: ['']
+    })
+  }
+
+  inputText(){
+    this.text = this.form.get("inputText").value;
+    console.log(this.text);
+  }
 
   @HostListener('document:keypress', ['$event'])
   public eventHandler(event: any): any{
@@ -34,11 +48,12 @@ export class AppComponent {
       let calc = (subtraction / this.text.length) * 100;
 
       calc == 100? alert("Você é um Hokage!") :
-      calc < 99.9 && calc > 75? alert("Você é um Jonnin!") :
+      calc < 99.9 && calc > 75? alert(`Você acertou `+calc+` por cento. Você é um Jonnin!`) :
       calc < 74.9 && calc > 50? alert("Você é um Chunnin!") :
       calc < 49.9 && calc > 25? alert("Você é um Gennin!") :
       calc < 25? alert("Você é um bosta!") : null
 
+      this.position = 0;
 
     };
 
